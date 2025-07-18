@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>markdown_cheat_sheet.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="table-of-content">Table Of Content</h1>
+<p><a href="#1-headings">1-Headings</a><br>
+<a href="#2-how-to-add-block-of-words">2-Block Of Words/ cititation</a><br>
+<a href="#3--line-breaks-by-back-slash">3-Line Breaks</a><br>
+<a href="#4-word-face">4-Words Faces</a><br>
+<a href="#5-bullet-points--lists">5-List &amp; Bullet Points</a><br>
+<a href="#6-line-breake-or-page-breaks">6-Line Break</a><br>
+<a href="#7-links--hyperlinks">7-Links &amp; HyperLinks</a><br>
+<a href="#8-images--figures-with-links">8-Images</a><br>
+<a href="#9-how-to-add-code-block">9-Code Block</a><br>
+<a href="#10-how-to-add-table">10-Tables</a></p>
+<hr>
+<h1 id="1-headings">1-Headings</h1>
+<p><em><strong>How to give Headings in markdown files</strong></em></p>
+<h2 id="heading-2">Heading 2</h2>
+<h3 id="heading-3">Heading 3</h3>
+<h4 id="heading-4">Heading 4</h4>
+<hr>
+<h1 id="2-how-to-add-block-of-words">2-How to add block of words</h1>
+<p>This is simple way to add block of words in markdown file but you can use a special way.</p>
+<h2 id="course-description">Course description</h2>
+<blockquote>
+<p><strong>AI</strong> is transforming how we live, work, and play.
+By enabling new technologies like self-driving cars and recommendation systems or improving old ones like medical diagnostics and search engines, the demand for expertise in AI and machine learning is growing rapidly.
+This course will enable you to take the first step toward solving important real-world problems and future-proofing your career.</p>
+<p><strong>CS50’s Introduction to Artificial Intelligence</strong> with Python explores the concepts and algorithms at the foundation of modern artificial intelligence, diving into the ideas that give rise to technologies like game-playing engines, handwriting recognition, and machine translation. Through hands-on projects, students gain exposure to the theory behind graph search algorithms, classification, optimization, reinforcement learning, and other topics in artificial intelligence and machine learning as they incorporate them into their own Python programs. By course’s end, students emerge with experience in libraries for machine learning as well as knowledge of artificial intelligence principles that enable them to design intelligent systems of their own.</p>
+</blockquote>
+<hr>
+<h2 id="3--line-breaks-by-back-slash">3- Line Breaks By Back Slash</h2>
+<p><strong>AI</strong> is transforming how we live, work, and play.<br>
+By enabling new technologies like self-driving cars and recommendation systems or improving old ones like medical diagnostics and search engines, the demand for expertise in AI and machine learning is growing rapidly.<br>
+This course will enable you to take the first step toward solving important real-world problems and future-proofing your career.</p>
+<hr>
+<h2 id="4-word-face">4-Word Face</h2>
+<p><strong>Bold</strong>   <strong>Bold</strong>  <br>
+<em>Italic</em>   <em>Italic</em>  <br>
+<em><strong>Bold + Italic</strong></em>   ___ Bold + Italic___</p>
+<hr>
+<h1 id="5-bullet-points--lists">5-Bullet Points / Lists</h1>
+<blockquote>
+<p>You can make a list by - ,1. , * ,+ <br>
+Here is an example of a list</p>
+</blockquote>
+<blockquote>
+<p><strong>List In Simple Format</strong></p>
+</blockquote>
+<ul>
+<li>Day-1
+<ul>
+<li>Introduction to Python</li>
+</ul>
+</li>
+<li>Day-2
+<ul>
+<li>Introduction to Python
+<ul>
+<li>Part 1</li>
+<li>Part 2</li>
+<li>Part 3</li>
+<li>Part 4</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Day-3
+<ul>
+<li>Introduction to Python
+<ul>
+<li>OOP</li>
+<li>DSA</li>
+<li>File Handling</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Day-4
+<ul>
+<li>Jupyter Notebook</li>
+</ul>
+</li>
+<li>Day-5
+<ul>
+<li>Markdown Language</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>List In Numbers Format</strong></p>
+</blockquote>
+<ol>
+<li>Day-1</li>
+<li>Day-2</li>
+<li>Day-3</li>
+<li>Day-4</li>
+<li>Day-5
+<ol>
+<li>Markdow Language</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h1 id="6-line-breake-or-page-breaks">6-Line Breake OR Page Breaks</h1>
+<h1 id="this-is-my-markdown-practice">This is my markdown practice</h1>
+<hr>
+<hr>
+<p>this is my page</p>
+<hr>
+<p>this is my page look</p>
+<hr>
+<h1 id="7-links--hyperlinks">7-Links &amp; HyperLinks</h1>
+<p><a href="mailto:abubakarikram16@gmail.com">abubakarikram16@gmail.com</a><br>
+<a href="https://www.github.com/abubakarikram16">https://www.github.com/abubakarikram16</a><br>
+<a href="https://www.linkedin.com/in/abubakarikram16">https://www.linkedin.com/in/abubakarikram16</a></p>
+<blockquote>
+<p><strong>HyperLink</strong><br>
+<a href="https://codanics.com/courses/python-ka-chilla-for-data-science-40-days-of-python-for-data-science/lesson/markdown-language-crash-course/">Python Ka Chilla  By Aammar</a></p>
+</blockquote>
+<p>If you want to Enroll in the course please visit <a href="https://codanics.com/courses/python-ka-chilla-for-data-science-40-days-of-python-for-data-science/lesson/markdown-language-crash-course/">Our Site</a></p>
+<hr>
+<h1 id="8-images--figures-with-links">8-Images &amp; Figures With Links</h1>
+<p>For File HyperLink    <a href="a.png">Click to veiw Photo</a><br>
+<img src="a.png" alt="Or you can check here"></p>
+<p>For Online Picture Link
+<a href="https://www.google.com/imgres?q=pmas&amp;imgurl=https%3A%2F%2Fwww.uaar.edu.pk%2Fslideshow%2Fadmin-190824.JPG&amp;imgrefurl=https%3A%2F%2Fwww.uaar.edu.pk%2Findex.php&amp;docid=SU3-Ra5cCRQRQM&amp;tbnid=cAguKgYJ5L69lM&amp;vet=12ahUKEwii5drFot6KAxWfzwIHHb05PZ0QM3oECDcQAA..i&amp;w=1100&amp;h=421&amp;hcb=2&amp;ved=2ahUKEwii5drFot6KAxWfzwIHHb05PZ0QM3oECDcQAA">PMAS</a></p>
+<p><img src="https://www.google.com/imgres?q=pmas&amp;imgurl=https://www.uaar.edu.pk/slideshow/admin-190824.JPG&amp;imgrefurl=https://www.uaar.edu.pk/index.php&amp;docid=SU3-Ra5cCRQRQM&amp;tbnid=cAguKgYJ5L69lM&amp;vet=12ahUKEwii5drFot6KAxWfzwIHHb05PZ0QM3oECDcQAA..i&amp;w=1100&amp;h=421&amp;hcb=2&amp;ved=2ahUKEwii5drFot6KAxWfzwIHHb05PZ0QM3oECDcQAA" alt="PMAS"></p>
+<hr>
+<h1 id="9-how-to-add-code-block">9-How to add Code BLock</h1>
+<p><code>print(&quot;Python&quot;)</code></p>
+<pre class="hljs"><code><div>x = <span class="hljs-number">6</span>
+y = <span class="hljs-number">7</span>
+print(x+y)
+
+</div></code></pre>
+<pre class="hljs"><code><div>
+x= <span class="hljs-number">5</span>;
+y = <span class="hljs-number">6</span>;
+printf(<span class="hljs-string">"%d"</span>,x+y);
+
+</div></code></pre>
+<hr>
+<h1 id="10-how-to-add-table">10-How to add Table</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:center">Age</th>
+<th style="text-align:center">Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Abubakar</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">BSCS</td>
+</tr>
+<tr>
+<td style="text-align:left">Hammad</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">BSCS</td>
+</tr>
+<tr>
+<td style="text-align:left">Usma</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">BSCS</td>
+</tr>
+<tr>
+<td style="text-align:left">Fatimah</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">BSCS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="11-extensions">11-Extensions</h1>
+
+</body>
+</html>
